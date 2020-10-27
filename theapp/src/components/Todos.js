@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 
 class Todos extends Component{
     render(){
-      console.log(this.props.todos)
-        return this.props.todos.map((todo) => (
-        <h3>{ todo.title }</h3>
-        ));
+        return (
+        <div className = "test">
+            <input type="checkbox" checked={this.props.item.completed} />
+            <label>Text is: {this.props.item.text}</label>
+        </div> 
+        )
     } 
 }
 
-export default Todos;
+export default Todos

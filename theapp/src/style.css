@@ -1,0 +1,21 @@
+body {
+  margin:0;
+}
+
+.navbar {
+  height: 100px;
+  background-color: #333;
+  color: whitesmoke;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.test {
+  color: #333;
+  font-size: 30px;
+  text-align: center;
+}
