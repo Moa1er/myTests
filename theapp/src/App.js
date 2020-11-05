@@ -3,17 +3,84 @@ import Todos from './components/Todos'
 import Joke from './components/Joke'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import MainContent from './components/MainContent'
+import Conditional from './components/Conditional'
 import './style.css'
 import todosData from './components/todosData'
 
 class App extends Component{
+  constructor() {
+        super()
+        this.state = {
+            firstName: "",
+            lastName: "",
+            age: 0,
+            gender: "",
+            destination: ""
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+  handleChange(event) { 
+      const {name, value} = event.target
+      this.setState(() => {
+        return {
+          [name]: value
+        }
+      })
+  }
+
   render(){
-    const todosComponent = todosData.map(todo => <Todos key={todo.id} item={todo} />);
     return (
-      <div className="App">
-        {todosComponent}
-      </div>
+      <main className="App">
+        <form>
+          <input 
+                name="firstName"
+                placeholder="First Name"
+                onChange={this.handleChange}
+          /> <br />
+          <input 
+                name="lastName"
+                placeholder="Last Name"
+                onChange={this.handleChange}
+          /> <br />
+          <input 
+                name="age"
+                placeholder="Age"
+                onChange={this.handleChange}
+          /> <br />
+          <label>Male
+            <input 
+                  name="gender"
+                  type="radio"
+                  value="male"
+                  onChange={this.handleChange}
+            /> <br />
+          </label>
+          <label>Female
+            <input 
+                  name="gender"
+                  type="radio"
+                  value="female"
+                  onChange={this.handleChange}
+            /> <br />
+          </label>
+
+          <select 
+              value={this.state.destination}
+              name="destination"
+              onChange={this.handleChange}
+          >
+            <option>Miami</option>
+            <option>Doubai</option>
+            <option>Tokyo</option>
+          </select> <br />
+          
+          <button>Submit</button>
+        </form>
+        <h1>Entered Information:</h1>
+        <p>Your name: {this.state.firstName} {this.state.lastName}</p>
+        <p>Your age: {this.state.age}</p>
+      </main>
     )
   }
 }
